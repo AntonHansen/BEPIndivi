@@ -3,6 +3,7 @@
 import inquirer from 'inquirer';
 import { displayEvents } from './events.js';
 import { registerParticipant, unregisterParticipant } from './participants.js';
+import { handleError } from './handleError.js';
 
 /*
 Huvudmenyn för CLI-appen. Användaren kan välja att visa events, registrera deltagare till eventerna, ta bort deltagare från eventer eller avsluta CLIn.
@@ -42,7 +43,7 @@ const mainMenu = async () => {
 
 		await mainMenu();
 	} catch (error) {
-		console.error('Error:', error.message);
+		handleError('mainMenu', error);
 	}
 };
 

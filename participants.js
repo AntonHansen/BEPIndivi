@@ -1,5 +1,6 @@
 import axios from 'axios';
 import inquirer from 'inquirer';
+import { handleError } from './handleError.js';
 
 /*
 Funktionen registerParticipant() används för att registrera en deltagare till ett event.
@@ -59,10 +60,7 @@ export const registerParticipant = async () => {
 
 		console.log('Registrerat deltagare:');
 	} catch (error) {
-		console.error(
-			'Error registering participant:',
-			error.response?.data || error.message
-		);
+		handleError('registerParticipant', error);
 	}
 };
 
@@ -89,9 +87,6 @@ export const unregisterParticipant = async () => {
 		);
 		console.log('Deltagare bortagen.');
 	} catch (error) {
-		console.error(
-			'Error removing participant:',
-			error.response?.data || error.message
-		);
+		handleError('unregisterParticipant', error);
 	}
 };

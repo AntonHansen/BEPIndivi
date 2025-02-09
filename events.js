@@ -1,5 +1,6 @@
 import axios from 'axios';
 import inquirer from 'inquirer';
+import { handleError } from './handleError.js';
 
 /*
 Funktionen displayEvents() hämtar alla events från databasen och visar dem för användaren.
@@ -47,6 +48,6 @@ export const displayEvents = async () => {
 		console.log(`Date: ${event.date}`);
 		console.log(`Description: ${event.description}\n`);
 	} catch (error) {
-		console.error('Error:', error.message);
+		handleError('displayEvents', error);
 	}
 };
